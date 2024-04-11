@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mini calculator</title>
+    <style>
+        #box{
+            text-align: center;
+        }
+        #inputdiv>input{
+            margin: 20px;
+            height: 30px;
+            width: 25%;
+        }
+        #btndiv>button{
+            margin: 20px;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+    <!-- all thing are appended -->
+</body>
+<script>
+  let body = document.getElementsByTagName("body")[0]
+  let div = document.createElement("div")
+  div.innerHTML="<h1>mini calculator</h1>";
+  div.style.width="80%";
+  div.style.textAlign="centre";
+  div.style.border="1px solid";
+  div.style.margin="auto";
+  div.id="box";
+
+  // input div create
+  let inputdiv = document.createElement("div")
+  inputdiv.id="inputdiv"
+  let numOne = document.createElement("input")
+  numOne.placeholder="Enter 1st number ";
+
+  let numTwo = document.createElement("input")
+  numTwo.placeholder="Enter 2nd number ";
+
+  inputdiv.append(numOne,numTwo)
+  
+  //arthmatic  buttons create
+  let btndiv = document.createElement("div")
+  btndiv.id = "btndiv";
+  let addBtn = document.createElement("button")
+  addBtn.innerText="Add"
+  let subBtn =  document.createElement("button")
+  subBtn.innerText="Subtract"
+  let mulBtn =  document.createElement("button")
+  mulBtn.innerText="Multiply"
+  let divBtn =  document.createElement("button")
+  divBtn.innerText="Divide"
+
+   //append all
+  btndiv.append(addBtn,subBtn,mulBtn,divBtn)
+  div.append(inputdiv,btndiv)
+  body.append(div)
+
+  addBtn.addEventListener("click", function() {
+    if (numOne.value === "" || numTwo.value === "") {
+        alert("Please fill in both numbers.");
+    } else {
+        let result = Number(numOne.value) + Number(numTwo.value);
+        alert("Result of addition: " + result);
+    }
+});
+
+subBtn.addEventListener("click", function() {
+    if (numOne.value === "" || numTwo.value === "") {
+        alert("Please fill in both numbers.");
+    } else {
+        let result = Number(numOne.value) - Number(numTwo.value);
+        alert("Result of subtraction: " + result);
+    }
+});
+
+mulBtn.addEventListener("click", function() {
+    if (numOne.value === "" || numTwo.value === "") {
+        alert("Please fill in both numbers.");
+    } else {
+        let result = Number(numOne.value) * Number(numTwo.value);
+        alert("Result of multiplication: " + result);
+    }
+});
+
+divBtn.addEventListener("click", function() {
+    if (numOne.value === "" || numTwo.value === "") {
+        alert("Please fill in both numbers.");
+    } else if (Number(numTwo.value) === 0) {
+        alert("Cannot divide by zero.");
+    } else {
+        let result = Number(numOne.value) / Number(numTwo.value);
+        alert("Result of division: " + result);
+    }
+});
+
+   
+</script> 
+</html>

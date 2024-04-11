@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <!-- body -->
+</body>
+</html>
+<script>
+   let body = document.querySelector("body")
+   let box = document.createElement("div")
+
+   let heading = document.createElement("h1")
+   heading.innerText="Check your BMI";
+    
+   let instruction = document.createElement("h3")
+   instruction.innerHTML="Enter your weight and height below to check your BMI results"
+    
+     //weight input 
+
+   let lab1 = document.createElement("h4")
+   lab1.innerText="Put your weight in here (Kgs)";
+
+   let weight = document.createElement("input")
+   weight.placeholder="weight(kgs)"
+
+      //height input
+
+   let lab2 = document.createElement("h4")
+   lab2.innerText="And  your  height in here (meters)";
+
+   let height = document.createElement("input")
+   height.placeholder="height(meters)"
+  
+   //calculate btn
+   let Btn = document.createElement("button")
+   Btn.innerText="Calculate BMI"
+   
+   let result= document.createElement("h2")
+    
+    Btn.addEventListener("click",function(){
+    var bmi = Number(weight.value)/(Number(height.value)*Number(height.value))
+     
+    
+    
+    if(bmi <=18.4){
+        result.innerText=`Your BMI is ${bmi} which means You are UnderWeight`
+    }
+    else if(bmi >= 18.5 && bmi <= 24.9){
+        result.innerText=`Your BMI is ${bmi} which means You are Normal Weight`
+     }
+     else if(bmi >= 25 && bmi <= 29.9){
+        result.innerText=`Your BMI is ${bmi} which means You are OverWeight`
+     }
+     else{
+        result.innerText=`Your BMI is ${bmi} which means You are Obese`
+     }
+     box.appendChild(result)
+    })
+     
+   
+    box.append(heading,instruction,lab1,weight,lab2,height,Btn)
+    body.append(box)
+    
+
+    
+</script>
