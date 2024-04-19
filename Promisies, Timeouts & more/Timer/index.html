@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        body{
+    background-image: url("https://wallpapercave.com/wp/wp7246673.jpg");
+    background-size: 80%;
+}
+
+#main-continer{
+    text-align: center;
+    margin:20% auto auto auto;
+    width: 40%;
+    /* height: 100px; */
+    padding: 10px;
+    background-color: rgb(0, 245, 229);
+}
+
+label{
+    font-size: 30px;
+    font-size: xx-large;
+    /* background-color: rgb(0, 245, 229); */
+}
+
+input{
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+#timer{
+    font-size: 80px;
+    font-weight: bolder;
+}
+
+.btn{
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    border: none;
+    font-size: larger;
+    cursor: pointer;
+}
+
+#set{
+    background-color: black;
+    color: white;
+}
+
+#start{
+  background-color: green;
+  color: white;
+}
+
+#pause{
+    background-color: blue;
+    color: white;   
+}
+
+#reset{
+    background-color: red;
+    color: white;
+}
+    </style>
+</head>
+<body>
+    <div id="main-continer">
+        <div id="timer"></div>
+        <label for="newTime">Set Time (mm:ss): </label>
+        <br>
+        <input type="text" id="newTime" placeholder="mm:ss">
+        <button class="btn" id="set" onclick="changeTimer()">Set</button>
+        <br>
+        <button class="btn" id="start" onclick="startTimer()">Start</button>
+        <button class="btn" id="pause" onclick="pauseTimer()">Pause</button>
+        <button class="btn" id="reset" onclick="resetTimer()">Reset</button>
+    </div>
+</body>
+</html>
+
+
+<script>
+    let timer;
+  let timeLeft = 600;
+
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+  }
+
+  function updateTimer() {
+    document.getElementById('timer').innerText = formatTime(timeLeft);
+  }
+
+  function startTimer() {
+    if (!timer) {
+      timer = setInterval(() => {
+        if (timeLeft > 0) {
+          timeLeft--;
+          updateTimer();
+        } else {
+          clearInterval(timer);
+          timer = null;
+          alert("Timer is up!");
+        }
+      }, 1000);
+    }
+  }
+
+  function pauseTimer() {
+    clearInterval(timer);
+    timer = null;
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = null;
+    timeLeft = 600;
+    updateTimer();
+  }
+
+  function changeTimer() {
+    const inputTime = document.getElementById('newTime').value;
+    const timeArray = inputTime.split(':');
+    
+    if (timeArray.length === 2) {
+      const minutes = parseInt(timeArray[0], 10);
+      const seconds = parseInt(timeArray[1], 10);
+
+      if (!isNaN(minutes) && !isNaN(seconds) && minutes >= 0 && seconds >= 0) {
+        timeLeft = minutes * 60 + seconds;
+        updateTimer();
+      } else {
+        alert("Please enter valid minutes and seconds.");
+      }
+    } else {
+      alert("Please enter the time in the format mm:ss.");
+    }
+  }
+
+  updateTimer();
+</script>
