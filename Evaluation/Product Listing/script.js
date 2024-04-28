@@ -3,7 +3,25 @@ let selCategory = document.querySelector("#category");
 let selPrice = document.querySelector("#priceSelect");
 let searInput = document.querySelector("#inputSearch");
 let searBtn = document.querySelector("#btn");
-let narr = []; 
+let narr = [];
+let forSearch = [];   
+
+   // search bar 
+   function searchbtn(){
+    let value = searInput.value
+    console.log(value);
+    
+   let result = forSearch.filter((ele,i)=>{
+    return ele.title.toLowerCase()=== value.toLowerCase()
+   })
+
+   if(result.length>0){
+    showData(result)
+   }
+   else{
+    box.innerHTML="<h2>product not found</h2>"
+   }
+}
 
 selCategory.addEventListener("change", function(){
     let choice = selCategory.value;
