@@ -10,7 +10,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 label {
@@ -40,7 +40,7 @@ th {
 }
 
 button {
-  background-color: #4CAF50;
+  background-color: #07d10e;
   border: none;
   color: white;
   padding: 10px 20px;
@@ -51,6 +51,10 @@ button {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 5px;
+}
+
+#orange {
+  background-color: orangered;
 }
 
 button:hover {
