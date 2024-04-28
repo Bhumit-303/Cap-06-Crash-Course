@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Manager App</title>
+</head>
+<link rel="stylesheet" href="styles.css">
+
+<body>
+    <!--  for  heading  -->
+<div>
+  <h1 style="text-align: center;"> Employee Management System </h1>
+
+</div>
+
+<!-- for filtering option  -->
+
+<div id ="Top">
+
+<!--  for filtering department   -->
+<div>
+    <label > Filter by department:</label>
+    <select id="depart">
+       
+      <option value="">--Select Department--</option>
+      <option value="engineering">engineering</option>
+      <option value="finance">finance</option>
+      <option value="operations">operations</option>
+      <option value="marketing">marketing</option>
+      <option value="hr">hr</option>
+    </select>
+</div>
+<!--  this div is for filtering Gender   -->
+<div>
+    <label > Filter by Gender:</label>
+    <select id="Gender">
+        <option value="">--Select Gender</option>
+      <option value="female">Female</option>
+      <option value="male">Male</option>
+      </select>
+</div>
+<!--  this div is for fsorting salary   -->
+<div>
+    <label > Sort by Salary:</label>
+    <select id="salary">
+        <option value="">--Select Order--</option>
+      <option value="asc">Low to High </option>
+      <option value="desc">High to Low</option>
+      </select>
+</div>
+</div>
+
+
+<!--  table method  -->
+
+<div>
+
+<table >  
+<thead>
+       <tr>
+        <th>S.no</th>
+        <th>Name </th>
+        <th>Gender </th>
+        <th>Department </th>
+        <th>Salary </th>
+       </tr>
+
+</thead>
+
+        <tbody id="tbody">
+
+        </tbody>
+
+</table>
+
+
+
+</div>
+
+<!--  div for buton previous and next  -->
+<div style="margin: auto;width: 35%;margin-top: 50px;"> 
+    <button onclick="prev()"> 
+Previous 
+    </button>
+    <button  onclick="next()"> Next </button>
+</div>
+
+</body>
+
+<script src="script.js"> </script>
+
+</html>
