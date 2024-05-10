@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      // Your JSX code here
+
+    let root = document.getElementById("root")
+     
+
+     function Imags(ImgProp){
+      return <img src={ImgProp.src}/>
+     }
+
+      function Gallery(prop){
+
+      return <div style={{
+        
+        display: "grid",
+        flexDirection: "column",
+        gridTemplateColumns: "repeat(3, 1fr)",
+        gap: "10px"
+        }}>
+
+         {prop.children}
+        </div>
+    }
+    
+    let children = (
+      <Gallery>
+        <Imags src="https://picsum.photos/id/238/400/300"/>
+        <Imags src="https://picsum.photos/id/233/400/300"/>
+        <Imags src="https://picsum.photos/id/231/400/300"/>
+        <Imags src="https://picsum.photos/id/232/400/300"/>
+        <Imags src="https://picsum.photos/id/234/400/300"/>
+        <Imags src="https://picsum.photos/id/230/400/300"/>
+        <Imags src="https://picsum.photos/id/240/400/300"/>
+    </Gallery>
+);
+
+      
+   
+      ReactDOM.createRoot(root).render(children)
+    </script>
+
+  </body>
+</html>
