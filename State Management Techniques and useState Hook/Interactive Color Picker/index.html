@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template</title>
+    <style>
+        /* CSS pattern from the first snippet */
+        * {
+            background-color: azure;
+        }
+
+        /* Additional styles for better readability */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #root {
+            text-align: center;
+        }
+
+        input {
+            margin: 20px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 6px;
+        }
+
+        /* Style for displaying color */
+        .color-display {
+            height: 200px;
+            width: 200px;
+            border: 2px solid black;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: transparent;
+        }
+
+        /* Style for invalid HEX color code */
+        .invalid-color {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
+    function App() {
+        //use state destructor
+        const [color, setColor] = React.useState("")
+        let GetColor = (event) => setColor(event.target.value)
+
+        //function for hex code check
+        let isValidHEX = (str) => /^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$/.test(str)
+
+        //div that show color
+        function Display() {
+            let displayStyles = {
+                backgroundColor: isValidHEX(color) ? color : "transparent"
+            };
+            return (             
+                <div className="color-display" style={displayStyles}>
+                    
+                    {isValidHEX(color) ? "" : <span className="invalid-color">HEX color code is invalid</span>}
+                </div>
+            )
+        }
+
+        return (
+            <>
+            <h1 id="head">Hii👋,Welcome To Color Picker!!</h1>  
+                <input
+                    type="text"
+                    placeholder="HEX color (e.g. #ffff)"
+                    onChange={GetColor}
+                    value={color}
+                />
+                <Display/>
+            </>
+        );
+    }
+
+    let react = ReactDOM.createRoot(document.getElementById("root"));
+    react.render(<App/>);
+</script>
+</body>
+</html>
